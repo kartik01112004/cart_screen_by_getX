@@ -13,7 +13,7 @@ class ShoppingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amberAccent,
-      body: Obx(() => SafeArea(
+      body: SafeArea(
         child: Column(
           children: [
             Expanded(
@@ -59,17 +59,18 @@ class ShoppingPage extends StatelessWidget {
                                 },
                                 child: const Text('Add to Cart'),
                               ),
-                               IconButton(
-                                icon: controller
-                                    .products[index].isFavorite.value
-                                    ? const Icon(Icons.check_box_rounded)
-                                    : const Icon(Icons
-                                    .check_box_outline_blank_outlined),
-                                onPressed: () {
-                                  controller.products[index].isFavorite
-                                      .toggle();
-                                },
-                              )
+                               Obx(() =>  IconButton(
+                                  icon: controller
+                                      .products[index].isFavorite.value
+                                      ? const Icon(Icons.check_box_rounded)
+                                      : const Icon(Icons
+                                      .check_box_outline_blank_outlined),
+                                  onPressed: () {
+                                    controller.products[index].isFavorite
+                                        .toggle();
+                                  },
+                              ),
+                               ),
                             ],
                           ),
                         ),
@@ -88,7 +89,7 @@ class ShoppingPage extends StatelessWidget {
             const SizedBox(height: 100),
           ],
         ),
-      ),),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
         backgroundColor: Colors.amber,
